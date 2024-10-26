@@ -49,50 +49,55 @@ class _HomePageState extends State<HomePage> {
       Container(
         color: const Color(0xFF131313),
       ),
-      Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: ResponsiveBreakpoints.of(context).equals(DESKTOP)
-                ? MediaQuery.of(context).size.width * 0.1
-                : MediaQuery.of(context).size.width * 0.05,
-            vertical: 25),
-        child: Scaffold(
-          appBar: _showAppBar
-              ? AppBar(
-                  title: Text('<G.A>',
+      Scaffold(
+        appBar: _showAppBar
+            ? AppBar(
+                title: Padding(
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.05),
+                  child: Text('<G.A>',
                       style: TextStyle(fontSize: actionTitleFontSize)),
-                  actions: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 30.0),
-                      child: TextButton(
-                        onPressed: () {
-                          scrollTo(aboutKey);
-                        },
-                        child: Text("About",
-                            style: TextStyle(fontSize: actionTitleFontSize)),
-                      ),
+                ),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 30.0),
+                    child: TextButton(
+                      onPressed: () {
+                        scrollTo(aboutKey);
+                      },
+                      child: Text("About",
+                          style: TextStyle(fontSize: actionTitleFontSize)),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 30.0),
-                      child: TextButton(
-                        onPressed: () {
-                          scrollTo(skillsKey);
-                        },
-                        child: Text("Skills",
-                            style: TextStyle(fontSize: actionTitleFontSize)),
-                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 30.0),
+                    child: TextButton(
+                      onPressed: () {
+                        scrollTo(skillsKey);
+                      },
+                      child: Text("Skills",
+                          style: TextStyle(fontSize: actionTitleFontSize)),
                     ),
-                    TextButton(
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        right: MediaQuery.of(context).size.width * 0.05),
+                    child: TextButton(
                       onPressed: () {
                         scrollTo(projectsKey);
                       },
                       child: Text("Projects",
                           style: TextStyle(fontSize: actionTitleFontSize)),
-                    )
-                  ],
-                )
-              : null,
-          body: SingleChildScrollView(
-            controller: _scrollController,
+                    ),
+                  )
+                ],
+              )
+            : null,
+        body: SingleChildScrollView(
+          controller: _scrollController,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.05),
             child: Column(
               children: [
                 SizedBox(

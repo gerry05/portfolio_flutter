@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                 title: Padding(
                   padding: EdgeInsets.only(
                       left: MediaQuery.of(context).size.width * 0.05),
-                  child: Text('<G.Assssss>',
+                  child: Text('<G.A>',
                       style: TextStyle(fontSize: actionTitleFontSize)),
                 ),
                 actions: [

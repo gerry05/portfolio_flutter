@@ -112,8 +112,8 @@ class _HomePageState extends State<HomePage> {
                     )),
                 SizedBox(
                     height: ResponsiveBreakpoints.of(context).equals(DESKTOP)
-                        ? MediaQuery.of(context).size.height * 1.5
-                        : MediaQuery.of(context).size.height * 2.3,
+                        ? MediaQuery.of(context).size.height * 1.7
+                        : MediaQuery.of(context).size.height * 2.5,
                     child: ProjectsSection(
                       key: projectsKey,
                     )),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:insta_image_viewer/insta_image_viewer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectsSection extends StatefulWidget {
   const ProjectsSection({super.key});
@@ -11,6 +12,12 @@ class ProjectsSection extends StatefulWidget {
 }
 
 class _ProjectsSectionState extends State<ProjectsSection> {
+  Future<void> _launchURL(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -29,25 +36,32 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                 title: 'Learnpod',
                 toolsIcons: ['android', 'flutter', 'firebase', 'nodejs'],
                 imageName: 'assets/projects/learnpod.png',
-                imageWidth: 300,
+                imageWidth: 400,
+              ),
+              buildItem(
+                title: 'WordHunt',
+                toolsIcons: ['android', 'web', 'flutter', 'generative_ai'],
+                imageName: 'assets/projects/wordhunt.png',
+                imageWidth: 400,
+                website: 'https://gerry05.github.io/wordhunt',
               ),
               buildItem(
                 title: 'Libot',
                 toolsIcons: ['android', 'flutter', 'firebase'],
                 imageName: 'assets/projects/libot.png',
-                imageWidth: 300,
+                imageWidth: 400,
               ),
               buildItem(
                 title: 'Cognitv',
                 toolsIcons: ['android', 'java'],
                 imageName: 'assets/projects/Cognitv.png',
-                imageWidth: 300,
+                imageWidth: 400,
               ),
               buildItem(
                 title: 'Swift',
                 toolsIcons: ['android', 'java', 'firebase'],
                 imageName: 'assets/projects/Swift.png',
-                imageWidth: 300,
+                imageWidth: 400,
               ),
             ],
           ),
@@ -61,6 +75,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     required List<String> toolsIcons,
     required String imageName,
     required double imageWidth,
+    String website = '',
   }) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -107,6 +122,26 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                       runSpacing: 4.0, // Adjust run spacing as needed
                       children: toolsIconsList(toolsIcons),
                     ),
+                    Visibility(
+                      visible: website.isNotEmpty,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text('Website'),
+                          GestureDetector(
+                              onTap: () {
+                                _launchURL(website);
+                              },
+                              child: Text(website,
+                                  style: const TextStyle(
+                                    color: Colors.blue,
+                                  ))),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
